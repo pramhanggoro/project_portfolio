@@ -1,4 +1,4 @@
-# NASA Lithium-ion Battery SOC Prediction
+# NASA Lithium-ion Battery SOH Prediction
 
 This project focuses on cleaning, preparing, and modeling NASA’s Lithium-ion Battery dataset to predict the **State of Charge (SOC)** of individual cells.  
 It demonstrates practical skills in data cleaning, exploratory data analysis (EDA), feature engineering, and the application of both traditional and deep learning models.
