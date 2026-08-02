@@ -56,11 +56,15 @@ A Kaggle account/API access is needed for `kagglehub` to download the dataset on
 | XGBoost | 0.64 | 0.0045 | 0.0673 | 0.0515 |
 | **LightGBM** | **0.78** | **0.0027** | **0.0524** | **0.0387** |
 
-**LightGBM** was the best-performing model across every metric after group-aware hyperparameter tuning.
+**LightGBM** was the best-performing model across every metric after hyperparameter tuning.
 
-**`Voltage_measured`** was the most important feature across all three models, consistent with the correlation analysis showing measured/load voltage strongly associated with SoH.
+For LightGBM, the electrolytic resistance after a discharge cycle (re_dis) is the most important feature. For XGBoost, the charge transfer resistance after a charging cycle (rct_charge) is the most important feature. For Random Forest, the experiment duration and cycle number are the most important features.
 
 ## Notes
 
 - Train/test splits are done **by Cell_ID**, not by row, so no cycles from the same battery leak across the split.
 - Cross-validation during grid search uses `GroupKFold` (grouped by Cell_ID) for the same reason — model selection never sees validation folds contaminated by cells it trained on.
+
+## Future Works
+
+For future works, the author will attempt to re-fit available impedance data using a proper ECM to see if other parameters could affect the SoH even more. However, since the dataset does not include any explanation regarding the ECM used to fit the EIS data or even if any datapoints were omitted due to high Kramers-Kronig relation residuals, this is still a work in progress. 
